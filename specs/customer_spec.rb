@@ -20,16 +20,29 @@ class CustomerTest < Minitest::Test
     assert_equal('Matteo', @customer1.name)
   end
 
+  def test_customer_is_old_enough_for_the_pub__customer_is_underage
+    assert_equal(false, @customer1.check_customer_is_legal)
+  end
 
-  # def test_is_wallet_reduced
-  #   @customer1.reduce_wallet(@drink1)
-  #   assert_equal(79, @customer1.wallet)
-  # end
-  #
-  # def test_drink_increases_intoxication
-  #   @customer1.take_a_drink(@drink1)
-  #   assert_equal(7, @customer1.intoxication_level)
-  # end
+  def test_customer_is_old_enough_for_the_pub__customer_is_older_than_18
+    assert_equal(true, @customer2.check_customer_is_legal)
+  end
+
+  def test_customer_is_old_enough_for_the_pub__customer_is_18
+    assert_equal(true, @customer3.check_customer_is_legal)
+  end
+
+  def test_customer_intoxication__is_not_drunk
+    assert_equal(true, @customer1.check_customer_intoxication_level)
+  end
+
+  def test_customer_intoxication__is_drunk
+    assert_equal(true, @customer1.check_customer_intoxication_level)
+  end
+
+  def test_customer_has_enough_money_for_drink
+    assert_equal(true, @customer1.check_customer_has_enough_money_for_drink(@drink1))
+  end
 
   def test_customer_has_bought_drink
     @customer1.buy_drink(@drink1)
