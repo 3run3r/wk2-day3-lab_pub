@@ -9,8 +9,9 @@ class CustomerTest < Minitest::Test
 
 def setup
     @drink1 = Drink.new('cider', 6)
-    @customer1 = Customer.new('Matteo', 85)
-    @customer2 = Customer.new('Olivia', 75)
+    @customer1 = Customer.new('Matteo', 17, 85)
+    @customer2 = Customer.new('Olivia', 27, 75)
+    @customer3 = Customer.new('Cody', 18, 40)
 end
 
 def test_customer_has_name
@@ -21,6 +22,9 @@ end
 def test_is_wallet_reduced
   @customer1.reduce_wallet(@drink1)
   assert_equal(79, @customer1.wallet)
+end
+
+def test_drink_
 
 end
 
