@@ -24,12 +24,12 @@ def check_customer_has_enough_money_for_drink(customer, drink)
   return customer.wallet >= drink.price
 end
 
-# def sells_drink(customer, drink)
-#   if check_customer_is_legal(customer) && check_customer_intoxication_level(customer) && customer.wallet >= drink.price
-#     add_to_till(drink)
-#     customer.reduce_wallet(drink)
-#   end
-# end
+def sells_drink(customer, drink)
+  if check_customer_is_legal(customer) && check_customer_intoxication_level(customer) && check_customer_has_enough_money_for_drink(customer, drink)
+    add_to_till(drink)
+    customer.reduce_wallet(drink)
+  end
+end
 
 
 end
