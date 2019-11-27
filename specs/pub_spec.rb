@@ -32,11 +32,11 @@ class PubTest < Minitest::Test
   #
   # end
 
+#Tests for entry
   def test_customer_is_old_enough_for_the_pub__customer_is_underage
     assert_equal(false, @pub1.check_customer_is_legal(@customer1))
   end
 
-#Tests for entry
   def test_customer_is_old_enough_for_the_pub__customer_is_older_than_18
     assert_equal(true, @pub1.check_customer_is_legal(@customer2))
   end
@@ -51,8 +51,22 @@ class PubTest < Minitest::Test
   end
 
   def test_customer_intoxication__is_drunk
-    assert_equal(false, @pub1.check_customer_intoxication_level(@customer2))
+    assert_equal(true, @pub1.check_customer_intoxication_level(@customer2))
   end
+
+  def test_customer_has_enough_money_for_drink
+    assert_equal(true, @pub1.check_customer_has_enough_money_for_drink(@customer2, @drink2))
+  end
+
+
+
+  # def test_customer_can_buy_drink
+  #   @pub1.sells_drink(@customer2, @drink1)
+  #   assert_equal(true, @pub1.check_customer_is_legal(@customer2))
+  #   assert_equal(true, @pub1.check_customer_intoxication_level(@customer2))
+  #   assert_equal(true, @customer2.wallet)
+  #
+  # end
 
 
 end
