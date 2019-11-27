@@ -19,13 +19,19 @@ def test_customer_has_name
 end
 
 
-def test_is_wallet_reduced
-  @customer1.reduce_wallet(@drink1)
-  assert_equal(79, @customer1.wallet)
-end
+# def test_is_wallet_reduced
+#   @customer1.reduce_wallet(@drink1)
+#   assert_equal(79, @customer1.wallet)
+# end
+#
+# def test_drink_increases_intoxication
+#   @customer1.take_a_drink(@drink1)
+#   assert_equal(7, @customer1.intoxication_level)
+# end
 
-def test_drink_increases_intoxication
-  @customer1.take_a_drink(@drink1)
+def test_customer_has_bought_drink
+  @customer1.buy_drink(@drink1)
+  assert_equal(79, @customer1.wallet)
   assert_equal(7, @customer1.intoxication_level)
 end
 

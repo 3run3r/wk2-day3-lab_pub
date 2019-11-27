@@ -9,11 +9,16 @@ class Customer
     @intoxication_level = intoxication_level
   end
 
-  def reduce_wallet(drink)
-    @wallet -= drink.price
-  end
+  # def reduce_wallet(drink)
+  #   @wallet -= drink.price
+  # end
+  #
+  # def take_a_drink(drink)
+  #   @intoxication_level += drink.alcohol_level
+  # end
 
-  def take_a_drink(drink)
+  def buy_drink(drink)
+    @wallet -= drink.price
     @intoxication_level += drink.alcohol_level
   end
 

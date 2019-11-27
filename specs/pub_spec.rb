@@ -32,31 +32,30 @@ class PubTest < Minitest::Test
   #
   # end
 
-# Tests for entry
-#   def test_customer_is_old_enough_for_the_pub__customer_is_underage
-#     assert_equal(false, @pub1.check_customer_is_legal(@customer1))
-#   end
-#
-#   def test_customer_is_old_enough_for_the_pub__customer_is_older_than_18
-#     assert_equal(true, @pub1.check_customer_is_legal(@customer2))
-#   end
-#
-#   def test_customer_is_old_enough_for_the_pub__customer_is_18
-#     assert_equal(true, @pub1.check_customer_is_legal(@customer3))
-#   end
-#
-# #Tests for when selling a drink
-#   def test_customer_intoxication__is_not_drunk
-#     assert_equal(true, @pub1.check_customer_intoxication_level(@customer1))
-#   end
-#
-#   def test_customer_intoxication__is_drunk
-#     assert_equal(true, @pub1.check_customer_intoxication_level(@customer2))
-#   end
-#
-#   def test_customer_has_enough_money_for_drink
-#     assert_equal(true, @pub1.check_customer_has_enough_money_for_drink(@customer2, @drink2))
-#   end
+
+  def test_customer_is_old_enough_for_the_pub__customer_is_underage
+    assert_equal(false, @pub1.check_customer_is_legal(@customer1))
+  end
+
+  def test_customer_is_old_enough_for_the_pub__customer_is_older_than_18
+    assert_equal(true, @pub1.check_customer_is_legal(@customer2))
+  end
+
+  def test_customer_is_old_enough_for_the_pub__customer_is_18
+    assert_equal(true, @pub1.check_customer_is_legal(@customer3))
+  end
+
+  def test_customer_intoxication__is_not_drunk
+    assert_equal(true, @pub1.check_customer_intoxication_level(@customer1))
+  end
+
+  def test_customer_intoxication__is_drunk
+    assert_equal(true, @pub1.check_customer_intoxication_level(@customer2))
+  end
+
+  def test_customer_has_enough_money_for_drink
+    assert_equal(true, @pub1.check_customer_has_enough_money_for_drink(@customer2, @drink2))
+  end
 
   def test_if_customer_can_buy_drink__they_can
     @pub1.sells_drink(@customer2, @drink1)
@@ -86,6 +85,15 @@ class PubTest < Minitest::Test
     assert_equal(85, @customer1.wallet)
     assert_equal(1000, @pub1.till)
     assert_equal(5, @customer1.intoxication_level)
+  end
+
+  def test_does_pub_sell_drink_if_customer_is_too_drunk
+    @pub1.sells_drink(@customer2, @drink1)
+    @pub1.sells_drink(@customer2, @drink1)
+    @pub1.sells_drink(@customer2, @drink1)
+    assert_equal(false, @pub1.check_customer_intoxication_level(@customer2))
+    assert_equal(63, @customer2.wallet)
+    assert_equal(1012, @pub1.till)
   end
 
 end
